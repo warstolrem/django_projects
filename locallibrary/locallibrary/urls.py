@@ -19,3 +19,13 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 ]
+
+from django.urls import include
+from django.urls import path
+urlpatterns += [
+	path('catalog/', include('catalog.urls')),
+]
+from django.views.generic import RedirectView
+urlpatterns += [
+	path('', RedirectView.as_view(url='/catalog/',permanent=True)),
+]
